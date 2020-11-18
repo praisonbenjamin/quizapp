@@ -1,0 +1,18 @@
+/* Your styles should be mobile-first and responsive */
+
+/** 
+  * If you are unclear on how to utilize a mobile-first, responsive technique to write your CSS, here is an example: 
+  *
+  * https://github.com/andreacardybailey/responsive_example/blob/master/styles/responsive-base.css 
+  *
+*/
+h1{
+  text-align: center;
+  margin-top: 10px;
+}
+
+.displayPage {
+  margin: 45px;
+  padding: 30px;
+  border: 2px solid red;
+}
