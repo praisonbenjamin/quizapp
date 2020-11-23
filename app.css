@@ -6,13 +6,125 @@
   * https://github.com/andreacardybailey/responsive_example/blob/master/styles/responsive-base.css 
   *
 */
+body{
+  background: linear-gradient(to right, black, rgb(51, 42, 51), rgb(43, 15, 43));
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  justify-content: center;
+  transition: 5s;
+}
 h1{
   text-align: center;
+  margin-top: 5%;
+}
+
+.score {
+  background: radial-gradient(to left, grey, violet);
+}
+
+ul {
+  padding-bottom: 10px;
+  list-style: none;
+}
+
+ul li{
+  padding-bottom: 10px;
+}
+
+button,
+input[type="submit"] {
+  border: solid white;
+  background-color: black;
+  color: white;
+  padding: 10px 40px 10px 40px;
+  margin-top: 10px;
+  transition: .3s;
+  
+}
+
+button:hover,
+input[type="submit"] {
+  background-color: cadetblue;
+}
+
+label, input[type="radio"]{
+padding-top: 50px;
+
+}
+
+/*mobile first*/
+.displayPage{
+  display: flex;
+  flex-direction: column-reverse;
+  border: 10px solid white;
+  border-radius: 25px;
+  margin: 2% 2% 2% 2%;
+}
+
+.displayPage .item1{
+  padding: 5% 5% 5% 5%;
+}
+
+.displayPage h2{
+  font-size: large;
+  color: white;
+  padding: 2px 5px 2px 5px;
+}
+
+.displayPage .item2{
+  display: flex;
+  align-content: center; 
+  margin-right: 10px;
   margin-top: 10px;
 }
 
-.displayPage {
-  margin: 45px;
-  padding: 30px;
-  border: 2px solid red;
+
+.displayPage img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 0;
+  width: 80%;
+  border: 2px solid white;
+  padding: 5px 5px 5px 5px;
+  border-radius: 0px 25px 0px 25px;
+}
+
+.radio{
+  padding-bottom: 10px;
+}
+
+
+
+@media all and (min-width: 930px) {
+  .displayPage {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 2% 10% 10% 10%;
+  }
+
+  .displayPage h2 {
+    font-size: xx-large;
+  }
+
+  .displayPage .item1{
+    padding: 15% 15% 5% 5%;
+  }
+
+  .displayPage .item2 img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+    max-height: 400px;
+    overflow: auto;
+  }
+
+  .displayPage .item2{
+    display: flex;
+    align-items: center;
+    margin-top: 0;
+    margin-right: 20px;
+  }
 }

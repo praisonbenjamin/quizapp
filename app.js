@@ -1,3 +1,5 @@
+"use strict";
+
 /**
  * Example store structure
  */
@@ -87,9 +89,16 @@ const store = {
 // Render start page
 function generateStartPage(){
   return `<div class="displayPage">
-  <h2>The Office</h2>
-  <p>For all of The Office fans out there...</p>
-  <button id="startQuiz">Start Quiz</button>
+  <div class=item1>
+    <h2>The<br>
+    Office Quiz</h2>
+    <p>For all of The Office fans out there...</p>
+    <button id="startQuiz">Start Quiz</button>
+  </div>
+  <div class= "item2">
+    <img src= "images/intro.gif" alt = "the office logo intro">
+  </div>
+
 </div>`
 }
 
@@ -107,56 +116,85 @@ function generateQuestionsPage(){
       <label for="answer${idx}">${answer}</label><br>`
     }
     return `<input type="radio" id="answer${idx}" name="answer" value="${answer}">
-    <label for="answer${idx}">${answer}</label><br>`
+    <label class = "space" for="answer${idx}">${answer}</label><br>`
   });
 
 
   return `<div class="displayPage">
-  <form id="question">
-  <div class = "keepScore"> Correct: ${store.score} Incorrect: ${store.incorrect}</div>
+  <div class= "item1">
+    <form id="question">
+    <div class = "keepScore"> Correct: ${store.score} Incorrect: ${store.incorrect}</div>
       <h2>${store.questionNumber +1} of 5: ${question.question}</h2>
-     ${answers.join("")}
+       ${answers.join("")}
       <button type="submit">Submit</button>
-  </form>
+    </form>
+  </div>
+  <div class="item2">
+    <img src="images/question.gif" alt="jim says question">
+  </div>
 </div>`
 }
 
 function generateRightWrong(){
   let feedback = '';
   if (store.answerChoice===store.questions[store.questionNumber].correctAnswer){
-    feedback = `Correct answer! You knew that about The Office!`;
+    feedback = `<div class=item1>
+      <h2>Nailed it!</h2>
+      <p>${store.questions[store.questionNumber].correctAnswer} is indeed the correct answer!</p>
+      <h3>Score:</h3>
+      <ul>
+        <li>Correct: ${store.score}</li>
+        <li>Wrong: ${store.incorrect}</li>
+      </ul>
+      <button id="next">Next</button>
+    </div>
+    <div class=item2>
+      <img src="images/correct.gif" alt="Andy says nailed it">
+    </div>`;
   } else {
-    feedback = `Not quite, try after again after rewatching!`
+    feedback = 
+    `<div class= "item1">
+      <h2>Actually, not quite...</h2>  
+      <p>The correct answer is '${store.questions[store.questionNumber].correctAnswer}'.</p>
+      <h3>Score:</h3>
+      <ul>
+        <li>Correct: ${store.score}</li>
+        <li>Wrong: ${store.incorrect}</li>
+      </ul>
+      <button id="next">Next</button>
+    </div>
+    <div class = "item2">
+      <img src= "images/oscar.jpg" alt = "all knowing Oscar">
+    </div>`
   }
   return `<div class="displayPage">
-  <h4>${feedback}</h2>
-    <p>The correct answer is: ${store.questions[store.questionNumber].correctAnswer}</p>
-  <h5>Score</h5>
-  <ul>
-      <li>Correct: ${store.score}</li>
-      <li>Wrong: ${store.incorrect}</li>
-  </ul>
-  <button id="next">Next</button>
+  ${feedback}
 </div>`
 }
 
 function generateLastPage(){
   let feedback = '';
   if (store.answerChoice===store.questions[store.questionNumber].correctAnswer){
-    feedback = `Correct answer! You knew that about The Office!`;
+    feedback = `<h2>Nailed it!</h2>
+    <p>${store.questions[store.questionNumber].correctAnswer} is indeed the correct answer!</p>`;
   } else {
-    feedback = `Not quite, try after again after rewatching!`
+    feedback = ` <h2>Actually, not quite...</h2>  
+    <p>The correct answer is '${store.questions[store.questionNumber].correctAnswer}'.</p>`
   }
   return `<div class="displayPage">
-  <h4>${feedback}</h2>
-    <p>The correct answer is: ${store.questions[store.questionNumber].correctAnswer}</p>
-  <h4> But you are done!</h2>
-  <h5>Score</h5>
-  <ul>
+  <div class = "item1">
+    ${feedback}
+    <h2> But you are done!</h2>
+    <h3>Score:</h3>
+    <ul>
       <li>Correct: ${store.score}</li>
       <li>Wrong: ${store.incorrect}</li>
-  </ul>
-  <button id="restart">Restart</button>
+    </ul>
+    <button id="restart">Restart</button>
+  </div>
+  <div class = "item2">
+    <img src ="images/finish.gif" alt="Dwight and Michael celebrating">
+  </div>
 </div>`
   
 }
